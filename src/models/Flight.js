@@ -7,7 +7,6 @@ const flightSchema = new mongoose.Schema({
         unique: true,
         uppercase: true,
         trim: true,
-        // Format: AA123 (airline code + number)
     },
     airline: {
         type: String,

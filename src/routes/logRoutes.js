@@ -9,41 +9,11 @@ import {
 
 const router = express.Router();
 
-/**
- * @route   GET /api/logs
- * @desc    Get all flight logs with pagination
- * @access  Public
- * @query   airline, origin, destination, limit, page
- */
-router.get('/', getAllFlightLogs);
-
-/**
- * @route   GET /api/logs/:flightNumber
- * @desc    Get most recent flight log for a specific flight number
- * @access  Public
- */
-router.get('/:flightNumber', getFlightLogByNumber);
-
-/**
- * @route   GET /api/logs/:flightNumber/all
- * @desc    Get all logs for a specific flight number
- * @access  Public
- */
-router.get('/:flightNumber/all', getAllLogsForFlight);
-
-/**
- * @route   GET /api/logs/:flightNumber/statistics
- * @desc    Get flight statistics
- * @access  Public
- */
-router.get('/:flightNumber/statistics', getFlightStatistics);
-
-/**
- * @route   DELETE /api/logs/:id
- * @desc    Delete a flight log
- * @access  Public
- */
-router.delete('/:id', deleteFlightLog);
+router.get('/', getAllFlightLogs);   // GET /api/logs
+router.get('/:flightNumber', getFlightLogByNumber);   // GET /api/logs/:flightNumber
+router.get('/:flightNumber/all', getAllLogsForFlight);   // GET /api/logs/:flightNumber/all
+router.get('/:flightNumber/statistics', getFlightStatistics);   // GET /api/logs/:flightNumber/statistics
+router.delete('/:id', deleteFlightLog);   // DELETE /api/logs/:id
 
 export default router;
 
