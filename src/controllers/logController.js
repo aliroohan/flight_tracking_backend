@@ -1,8 +1,6 @@
 import FlightLog from '../models/FlightLog.js';
 
-/**
- * GET API to retrieve all flight logs
- */
+
 export const getAllFlightLogs = async (req, res) => {
     try {
         const { airline, origin, destination, limit = 50, page = 1 } = req.query;

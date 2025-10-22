@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 
-// Schema for real-time flight tracking data (active flights)
 const flightTrackingSchema = new mongoose.Schema({
     flightNumber: {
         type: String,
@@ -9,7 +8,6 @@ const flightTrackingSchema = new mongoose.Schema({
         trim: true,
         ref: 'Flight'
     },
-    // Position data from radio signal receiver
     position: {
         latitude: {
             type: Number,
@@ -26,28 +24,22 @@ const flightTrackingSchema = new mongoose.Schema({
         altitude: {
             type: Number,
             required: true,
-            // Altitude in feet
         }
     },
-    // Flight parameters
     speed: {
         type: Number,
         required: true,
-        // Speed in knots
     },
     heading: {
         type: Number,
         required: true,
         min: 0,
         max: 360,
-        // Direction in degrees (0-360, where 0/360 is North)
     },
     verticalSpeed: {
         type: Number,
         required: true,
-        // Rate of climb/descent in feet per minute
     },
-    // Signal metadata
     receiverInfo: {
         receiverId: {
             type: String,
@@ -68,11 +60,6 @@ const flightTrackingSchema = new mongoose.Schema({
         required: true,
         default: Date.now
     },
-    squawk: {
-        type: String,
-        // Transponder code (4 digits)
-    },
-    // Additional metadata
     isActive: {
         type: Boolean,
         default: true

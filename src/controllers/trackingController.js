@@ -2,10 +2,7 @@ import FlightTracking from '../models/FlightTracking.js';
 import Flight from '../models/Flight.js';
 import FlightLog from '../models/FlightLog.js';
 
-/**
- * POST API to ingest tracking data from radio signal receivers
- * This mimics the data received from actual radio receivers
- */
+
 export const ingestTrackingData = async (req, res) => {
     try {
         const trackingData = req.body;
@@ -29,7 +26,6 @@ export const ingestTrackingData = async (req, res) => {
             verticalSpeed: trackingData.verticalSpeed,
             receiverInfo: trackingData.receiverInfo,
             timestamp: trackingData.timestamp || new Date(),
-            squawk: trackingData.squawk,
             isActive: true
         });
         
@@ -91,7 +87,6 @@ export const ingestBatchTrackingData = async (req, res) => {
             verticalSpeed: data.verticalSpeed,
             receiverInfo: data.receiverInfo,
             timestamp: data.timestamp || new Date(),
-            squawk: data.squawk,
             isActive: true
         }));
         
@@ -122,10 +117,6 @@ export const ingestBatchTrackingData = async (req, res) => {
     }
 };
 
-/**
- * GET API to retrieve flight location at a specific time
- * Query params: flightNumber (required), timestamp (optional - defaults to current time)
- */
 export const getFlightLocation = async (req, res) => {
     try {
         const { flightNumber } = req.params;
@@ -335,7 +326,6 @@ export const completeFlight = async (req, res) => {
                 verticalSpeed: t.verticalSpeed,
                 receiverInfo: t.receiverInfo,
                 timestamp: t.timestamp,
-                squawk: t.squawk
             }))
         });
         
